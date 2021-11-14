@@ -65,15 +65,17 @@
 }
 
 .page-hero-content p {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
-    margin-top: 15px;
+    margin: 16px 4px;
 }
 
 .page-header ul {
     align-items: center;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .page-header li {
@@ -91,6 +93,7 @@
 }
 
 .usernav {
-    font-size: 50px;
-    color: yellow;
+    font-size: 25px;
+    color: black;
+    text-align: center;
 }
