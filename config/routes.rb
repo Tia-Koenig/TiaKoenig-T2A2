@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
+
+  resources :cards
   
   root to: "home#index"
 
-  get "/home", to: "home#index"
-
-  get "/cards", to: "cards#index"
-# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

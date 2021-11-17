@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# sample data 
+
+Card.destroy_all
+
+Card.create(title: "Venasaur", number: 3, set: "Base 1", condition: "Good")
+
+Card.create(title: "Charizard", number: 6, set: "Base 1", condition: "Fair")
+
+Card.create(title: "Blastoise", number: 9, set: "Base 1", condition: "Excellent")

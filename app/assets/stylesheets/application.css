@@ -54,6 +54,7 @@
 
 .page-heading {
     margin-top: 15px;
+    margin-bottom: 15px;
     text-align: center;
     font-size: 20px;
 }
@@ -96,4 +97,13 @@
     font-size: 25px;
     color: black;
     text-align: center;
+}
+
+.cards-links li {
+    list-style: none;
+    margin-bottom: 4px;
+}
+
+.cards-links a {
+    color: white;
 }
