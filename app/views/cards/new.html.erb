@@ -1,1 +1,29 @@
-<h1>New listing</h1>
+<h1>New Listing</h1>
+
+<%= form_with model: Card.new do |f| %>
+    <p>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        
+    </p>
+    <p>
+        <%= f.label :number %>
+        <%= f.number_field :number %>
+    </p>
+    <p>
+        <%= f.label :set %>
+        <%= f.text_field :genset %>
+    </p>
+    <p>
+        <%= f.label :condition %>
+        <%= f.text_field :condition %>
+    </p>
+    <p>
+        <%= f.label :price %>
+        <%= f.number_field :price, in: 1..100000 %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+    
+<% end %>

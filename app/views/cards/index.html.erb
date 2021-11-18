@@ -24,17 +24,32 @@
         <div class="page-hero-content">
             <h1 class="page-heading">Listings</h1>
             <div class="cards-links">
-                <ul>
-                    <li><a href="/cards/new">Create a Listing</a></li>
-                </ul>
+                <p><%= link_to "Create a Listing", new_card_path%></p>
             </div>
-            <% @cards.each do |card|  %>
+            <div class="cards-container">
+                <table>
+                <tr>
+                    <th>Card</th>
+                    <th>Set</th>
+                    <th>Price</th>
+                </tr>
+                <% @cards.each do |card|  %>
+                    <tr>
+                        <td><%= link_to card.title, card_path(card.id) %></td>
+                        <td><%= card.genset %></td>
+                        <td><%= card.price %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+            <!-- <% @cards.each do |card|  %>
             <h2><%= link_to card.title, card_path(card.id) %></h2>
             <p> <%= card.id %> </p>
-            <% end  %>
+            <% end  %> -->
             
         </div>
-        <div class="cards-container">
+        
+        
 
         </div>
     </div>

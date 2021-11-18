@@ -1,1 +1,10 @@
 <h1><%= @card.title %></h1> 
+
+
+
+<h3>Card Number: <%= @card.number %></h3>
+<h3>Condition: <%= @card.condition %></h3>
+<h3>Set: <%= @card.genset %></h3>
+<h3>Price: <%= @card.price %></h3>
+
+<p><%= link_to "Back to Listings", cards_path  %></p>

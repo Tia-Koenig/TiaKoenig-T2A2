@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
 
     def index
-        @cards = Card.all
+        @cards = Card.order(title: :asc)
     end
     
     def new 
@@ -12,11 +12,12 @@ class CardsController < ApplicationController
     end
 
     def create 
-        @card = Card.new
-        if @card.save
-            # redirect_to @card
-        else #add flash error
-        end
+        # @card = Card.new
+        # if @card.save
+        #     # redirect_to @card
+        # else #add flash error
+        # end
+        render json: params
     end 
 
     def update 
