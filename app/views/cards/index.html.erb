@@ -36,6 +36,8 @@
                 <% @cards.each do |card|  %>
                     <tr>
                         <td><%= link_to card.title, card_path(card.id) %></td>
+                        <h3>Set: <%= @gensets.find(card.genset_id).set %> </h3>
+                        <h3>Price: $<%= card.price %> </h3>
                     </tr>
                 <% end %>
             </table>
