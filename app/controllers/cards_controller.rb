@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
     before_action :setup_genset_and_card_condition, only: [:new, :edit]
-    before_action :find_card_setup, only: [:update, :edit, :show]
+    before_action :find_card_setup, only: [:update, :edit, :show, :destroy]
     # before_action :authenticate_user!, except: [:index]
     #add :show when created ^ 
 
@@ -32,7 +32,8 @@ class CardsController < ApplicationController
     end
 
     def destroy 
-        
+        @card.delete
+        redirect_to cards_path
     end
 
     def show 
