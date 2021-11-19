@@ -8,15 +8,10 @@
     </p>
     <p>
         <%= f.label :number %>
-        <%= f.number_field :number %>
+        <%= f.number_field :number, in: 1..151 %>
     </p>
     <p>
-        <%= f.label :set %>
-        <%= f.text_field :genset %>
-    </p>
-    <p>
-        <%= f.label :condition %>
-        <%= f.text_field :condition %>
+       
     </p>
     <p>
         <%= f.label :price %>

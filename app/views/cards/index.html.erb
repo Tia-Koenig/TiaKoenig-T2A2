@@ -36,8 +36,6 @@
                 <% @cards.each do |card|  %>
                     <tr>
                         <td><%= link_to card.title, card_path(card.id) %></td>
-                        <td><%= card.genset %></td>
-                        <td><%= card.price %></td>
                     </tr>
                 <% end %>
             </table>
