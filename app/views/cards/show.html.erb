@@ -10,5 +10,5 @@
     <%= link_to "Back to Listings", cards_path  %>
     |
     <%= link_to "Edit", edit_card_path(@card) %>
-    |<%= link_to "Delete Card", @card, method: :delete  %>
+    |<%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
 </p>

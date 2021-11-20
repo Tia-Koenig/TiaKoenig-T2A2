@@ -1,0 +1,27 @@
+<%= form_with model: @card do |f| %>
+<p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+</p>
+<p>
+    <%= f.label :card_number %>
+    <%= f.number_field :number, in: 1..151 %>
+</p>
+
+<p>
+    <%= f.label :price %>
+    <%= f.number_field :price, in: 1..100000 %>
+</p>
+<p>
+<p>
+    <%= f.label :set %>
+    <%= f.collection_select :genset_id, @genset, :id, :set %>
+</p>
+<p>
+    <%= f.label :condition %>
+    <%= f.collection_select :card_condition_id, @card_condition, :id, :condition %>
+</p>
+    <%= f.submit btn %>
+</p>
+
+<% end %>

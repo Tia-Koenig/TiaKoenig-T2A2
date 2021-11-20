@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <% if flash[:errors] %>
+    <section class="error-message">
+      <% flash[:errors].each do |error| %>
+      <h3> <%= error %> </h3>
+      <% end %>
+    </section>
+    <% end %>
+
     <%= render 'layouts/usernav' %>
 
     <p class="notice"><%= notice %></p>
