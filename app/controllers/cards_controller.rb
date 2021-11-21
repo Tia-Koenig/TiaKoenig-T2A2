@@ -63,7 +63,7 @@ class CardsController < ApplicationController
     end
 
     def card_params
-        params.require(:card).permit(:title, :number, :price, :genset_id, :card_condition_id)
+        params.require(:card).permit(:title, :number, :price, :genset_id, :card_condition_id, :card_image)
     end
 
     def setup_genset_and_card_condition
@@ -79,12 +79,13 @@ class CardsController < ApplicationController
         authorize Card
     end
 
+    
     private 
-
+    
     def check_user
-        if user_signed_in? && (current_user.has_role?(:admin) || current_user.id == @card.user_id )
+        begin user_signed_in? && (current_user.has_role?("admin") || current_user.id == @card.user_id )
             return true
-        else 
+        rescue 
             flash[:alert] = "You are not authorized to do that!"
             redirect_to root_path
         end

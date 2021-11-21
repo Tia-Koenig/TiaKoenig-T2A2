@@ -21,7 +21,7 @@ class CardPolicy
   end
 
   def new?
-    create?
+    update?
   end
 
   def update?
@@ -34,6 +34,7 @@ class CardPolicy
 
   def destroy?
     update?
+    #need to make admin able to delete and edit books, currently not working on other users cards
   end
 
   class Scope

@@ -1,5 +1,10 @@
-<h1><%= @card.title %></h1> 
 
+<h1><%= @card.title %></h1> 
+<p class="card-image">
+    <%if @card.card_image.attached?%>
+    <%= image_tag @card.card_image, crop: :scale, width: 240 %>
+<% end %>
+</p>
 <h3>Set: <%= @genset.set %> </h3>
 <h3>Card Number: <%= @card.number %></h3>
 <h3>Condition: <%= @card_condition.condition %></h3>
@@ -11,11 +16,11 @@
 <p>
     <%= link_to "Back to Listings", cards_path  %>
 
-    <% if policy(@card).update? && @card.user_id == @user %>           
+    <% if policy(@card).update? && (current_user.has_role?("admin") || current_user.id == @card.user_id) %>           
         |
         <%= link_to "Edit", edit_card_path(@card) %>
     <% end %>
-    <% if policy(@card).destroy? && @card.user_id == @user %>
+    <% if policy(@card).destroy? && (current_user.has_role?("admin") || current_user.id == @card.user_id)%>
     |
     <%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
 

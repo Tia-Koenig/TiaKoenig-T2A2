@@ -34,6 +34,7 @@
 
             <div class="cards-container">
                 <% @cards.each do |card|  %>
+                    <p class="listing-card-image"> <%= cl_image_tag card.card_image.key, crop: :scale, width: 120, cloud_name: "dle1j6d3x" if card.card_image.attached? %> </p>
                     <h3 class="card-container-heading">Card</h3>
                     <h3 class="card-title"><%= link_to card.title, card_path(card.id) %></h3>
                     <h3 class="card-container-heading">Set</h3>

@@ -65,3 +65,5 @@ gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "rolify", "~> 6.0"
 
 gem "pundit", "~> 2.1"
+
+gem "dotenv-rails", "~> 2.7"
