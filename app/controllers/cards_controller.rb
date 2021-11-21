@@ -1,11 +1,15 @@
 class CardsController < ApplicationController
+    before_action :check_authorization
+    before_action :find_card, only: [:update, :edit, :show, :destroy]
     before_action :setup_genset_and_card_condition, only: [:new, :edit, :show, :create]
-    before_action :find_card_setup, only: [:update, :edit, :show, :destroy]
-    # before_action :authenticate_user!, except: [:index]
-    #add :show when created ^ 
+    before_action :check_user, only: [:edit, :update, :destroy]
+    
+
+    #add :show when created for account, so when they click account, if theyre logged in, they'll see their information, if not, redirect to login 
 
 
     def index
+
         @cards = Card.order(title: :asc)
         @gensets = Genset.all
         @card_conditions = CardCondition.all
@@ -28,14 +32,16 @@ class CardsController < ApplicationController
     end 
 
     def edit 
-        find_card_setup
+        begin
+
+        rescue 
+            
+        end
     end
 
-    #need to add flash error similar to create for update
+    #need to add flash error for update
 
     def update 
-        find_card_setup
-          
         @card.update(card_params)
         redirect_to card_path(@card.id)
         
@@ -47,9 +53,9 @@ class CardsController < ApplicationController
     end
 
     def show 
-        find_card_setup
         @genset = Genset.find(@card.genset_id)
         @card_condition = CardCondition.find(@card.card_condition_id)
+        @user = current_user.id
     end
 
     def get_card_id 
@@ -65,7 +71,22 @@ class CardsController < ApplicationController
         @card_condition = CardCondition.order(:id)
     end
 
-    def find_card_setup
+    def find_card
         @card = Card.find(params[:id])
+    end
+
+    def check_authorization
+        authorize Card
+    end
+
+    private 
+
+    def check_user
+        if user_signed_in? && (current_user.has_role?(:admin) || current_user.id == @card.user_id )
+            return true
+        else 
+            flash[:alert] = "You are not authorized to do that!"
+            redirect_to root_path
+        end
     end
 end

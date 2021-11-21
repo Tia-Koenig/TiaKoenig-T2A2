@@ -1,4 +1,9 @@
 <%= form_with model: @card do |f| %>
+
+<p>
+    <%= f.label :image %>
+    <%= f.file_field :card_image %>
+</p>
 <p>
     <%= f.label :title %>
     <%= f.text_field :title %>

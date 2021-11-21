@@ -6,9 +6,18 @@
 <h3>Seller: <%= @card.user.email %> </h3>
 <h3>Price: $<%= @card.price %> </h3>
 
+<!-- <h3>Description: ##add message field so users can add anything else they want to say about the card## </h3> -->
+
 <p>
     <%= link_to "Back to Listings", cards_path  %>
+
+    <% if policy(@card).update? && @card.user_id == @user %>           
+        |
+        <%= link_to "Edit", edit_card_path(@card) %>
+    <% end %>
+    <% if policy(@card).destroy? && @card.user_id == @user %>
     |
-    <%= link_to "Edit", edit_card_path(@card) %>
-    |<%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
+    <%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
+
+    <% end %>
 </p>
