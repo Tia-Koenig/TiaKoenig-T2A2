@@ -16,13 +16,13 @@
 <p>
     <%= link_to "Back to Listings", cards_path  %>
 
-    <% if policy(@card).update? && (current_user.has_role?("admin") || current_user.id == @card.user_id) %>           
+    <% if policy(@card).update? %>           
         |
         <%= link_to "Edit", edit_card_path(@card) %>
     <% end %>
-    <% if policy(@card).destroy? && (current_user.has_role?("admin") || current_user.id == @card.user_id)%>
-    |
-    <%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
+    <% if policy(@card).destroy? %>
+        |
+        <%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
 
     <% end %>
 </p>

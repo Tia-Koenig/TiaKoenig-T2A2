@@ -1,15 +1,14 @@
 class CardsController < ApplicationController
-    before_action :check_authorization
+    before_action :authenticate_user!, except: [:index, :show]
+    before_action :check_authorization, except: [:index, :show, :new, :create]
     before_action :find_card, only: [:update, :edit, :show, :destroy]
     before_action :setup_genset_and_card_condition, only: [:new, :edit, :show, :create]
-    before_action :check_user, only: [:edit, :update, :destroy]
     
 
     #add :show when created for account, so when they click account, if theyre logged in, they'll see their information, if not, redirect to login 
 
 
     def index
-
         @cards = Card.order(title: :asc)
         @gensets = Genset.all
         @card_conditions = CardCondition.all
@@ -41,10 +40,9 @@ class CardsController < ApplicationController
 
     #need to add flash error for update
 
-    def update 
+    def update
         @card.update(card_params)
         redirect_to card_path(@card.id)
-        
     end
 
     def destroy 
@@ -55,11 +53,6 @@ class CardsController < ApplicationController
     def show 
         @genset = Genset.find(@card.genset_id)
         @card_condition = CardCondition.find(@card.card_condition_id)
-        @user = current_user.id
-    end
-
-    def get_card_id 
-        @card_id = params[:id].to_i
     end
 
     def card_params
@@ -76,18 +69,12 @@ class CardsController < ApplicationController
     end
 
     def check_authorization
-        authorize Card
+        @card = find_card
+        authorize @card
     end
 
     
     private 
     
-    def check_user
-        begin user_signed_in? && (current_user.has_role?("admin") || current_user.id == @card.user_id )
-            return true
-        rescue 
-            flash[:alert] = "You are not authorized to do that!"
-            redirect_to root_path
-        end
-    end
+
 end

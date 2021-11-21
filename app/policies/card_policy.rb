@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class CardPolicy
-  attr_reader :user, :record
+  attr_reader :user, :card
 
-  def initialize(user, record)
+  def initialize(user, card)
     @user = user
-    @record = record
+    @card = card
   end
 
   def index?
@@ -17,15 +17,15 @@ class CardPolicy
   end
 
   def create?
-    update?
+    user.has_role?(:admin) || user.has_role?(:user)
   end
 
   def new?
-    update?
+    create?
   end
 
   def update?
-    @user.has_any_role?(:user, :admin)
+    user.has_role?(:admin) || user.id == card.user_id
   end
 
   def edit?
@@ -36,6 +36,8 @@ class CardPolicy
     update?
     #need to make admin able to delete and edit books, currently not working on other users cards
   end
+
+
 
   class Scope
     def initialize(user, scope)

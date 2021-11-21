@@ -8,7 +8,10 @@
 
 # sample data 
 
-Card.destroy_all
+User.create(email: "seed@admin.com", password: "password")
+User.find_by(email: "seed@admin.com").add_role(:admin)
+
+User.create(email: "test@test.com", password: "password")
 
 # Card.create(title: "Venasaur", number: 3, set: "Base 1", condition: "Good")
 
