@@ -13,8 +13,17 @@ User.find_by(email: "seed@admin.com").add_role(:admin)
 
 User.create(email: "test@test.com", password: "password")
 
-# Card.create(title: "Venasaur", number: 3, set: "Base 1", condition: "Good")
+Genset.create(set: "Base Set 1")
+Genset.create(set: "Jungle")
+Genset.create(set: "Fossil")
+Genset.create(set: "Base Set 2")
+Genset.create(set: "Team Rocket")
+Genset.create(set: "Gym Heroes")
+Genset.create(set: "Gym Challenge")
 
-# Card.create(title: "Charizard", number: 6, set: "Base 1", condition: "Fair")
-
-# Card.create(title: "Blastoise", number: 9, set: "Base 1", condition: "Excellent")
+CardCondition.create(condition: "Mint")
+CardCondition.create(condition: "Near Mint")
+CardCondition.create(condition: "Lightly Played")
+CardCondition.create(condition: "Moderatly Played")
+CardCondition.create(condition: "Heavily Played")
+CardCondition.create(condition: "Damaged")
