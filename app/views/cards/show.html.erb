@@ -1,28 +1,47 @@
-
-<h1><%= @card.title %></h1> 
-<p class="card-image">
-    <%if @card.card_image.attached?%>
-    <%= image_tag @card.card_image, crop: :scale, width: 240 %>
-<% end %>
-</p>
-<h3>Set: <%= @genset.set %> </h3>
-<h3>Card Number: <%= @card.number %></h3>
-<h3>Condition: <%= @card_condition.condition %></h3>
-<h3>Seller: <%= @card.user.email %> </h3>
-<h3>Price: $<%= @card.price %> </h3>
+<div class="container show-container">
+    <div class="card-content">
+        <%if @card.card_image.attached?%>
+        <%= image_tag @card.card_image, crop: :scale, width: 240 %>
+        <% end %>
+        <div class="text-content">
+            <h1 class="card-heading show-heading"><%= @card.title %></h1> 
+            <div class="card-text-container">
+                <h3 class="card-heading">Set:</h3> 
+                <h3 class="card-title"><%= @genset.set %></h3>
+            </div>
+            <div class="card-text-container">
+                <h3 class="card-heading">Card Number:</h3> 
+                <h3 class="card-title"><%= @card.number %></h3>
+            </div>
+            <div class="card-text-container">
+                <h3 class="card-heading">Condition:</h3> 
+                <h3 class="card-title"><%= @card_condition.condition %></h3>
+            </div>
+            <div class="card-text-container">
+                <h3 class="card-heading">Seller:</h3> 
+                <h3 class="card-title"><%= @card.user.email %> </h3>
+            </div>
+            <div class="card-text-container">
+                <h3 class="card-heading">Price:</h3> 
+                <h3 class="card-title">$<%= @card.price %> </h3>
+            </div>
+        </div>
+    </div>
+    <div class="show-links-container">
+        <button class="btn-primary back-btn">
+            <%= link_to "Back to Listings", cards_path  %>
+        </button>
+        <button class="btn-primary edit-btn">
+            <% if policy(@card).update? %>           
+                <%= link_to "Edit", edit_card_path(@card) %>
+            <% end %>
+        </button>
+        <button class="btn-primary delete-btn">
+            <% if policy(@card).destroy? %>
+                <%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
+            <% end %>
+        </button>
+    </div>
+</div>
 
 <!-- <h3>Description: ##add message field so users can add anything else they want to say about the card## </h3> -->
-
-<p>
-    <%= link_to "Back to Listings", cards_path  %>
-
-    <% if policy(@card).update? %>           
-        |
-        <%= link_to "Edit", edit_card_path(@card) %>
-    <% end %>
-    <% if policy(@card).destroy? %>
-        |
-        <%= link_to "Delete Card", @card, method: :delete, data: {confirm: "Are you sure you want to delete this Card?"}  %>
-
-    <% end %>
-</p>

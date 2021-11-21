@@ -20,25 +20,35 @@
             </ul>
         </nav>
     </header>
-    <div class="container page-hero">
-        <div class="page-hero-content">
-            <h1 class="page-heading">Listings</h1>
+    <div class="container listings-container">
+        <div class="listings-content">
+            <h1 class="page-heading listings-heading">Listings</h1>
 
             <div class="cards-links">
-                <p><%= link_to "Create a Listing", new_card_path%></p>
+                <button class="btn-primary create-btn"><%= link_to "Create a Listing", new_card_path%></button>
             </div>
 
             <div class="cards-container">
                 <% @cards.each do |card|  %>
-                    <p class="listing-card-image"> <%= cl_image_tag card.card_image.key, crop: :scale, width: 120, cloud_name: "dle1j6d3x" if card.card_image.attached? %> </p>
-                    <h3 class="card-container-heading">Card</h3>
-                    <h3 class="card-title"><%= link_to card.title, card_path(card.id) %></h3>
-                    <h3 class="card-container-heading">Set</h3>
-                    <h3 class="card-title"><%= @gensets.find(card.genset_id).set %></h3>
-                    <h3 class="card-container-heading">Condition</h3>
-                    <h3 class="card-title"> <%= @card_conditions.find(card.card_condition_id).condition %> </h3>
-                    <h3 class="card-container-heading">Price</h3>
-                    <h3 class="card-title">$<%= card.price %> </h3>
+                    <div class="card-content">
+                        <%= cl_image_tag card.card_image.key, crop: :scale, cloud_name: "dle1j6d3x" if card.card_image.attached? %>
+                        <div class="card-text-container">
+                            <h3 class="card-heading">Card:</h3>
+                            <h3 class="card-title"><%= link_to card.title, card_path(card.id) %></h3>
+                        </div>
+                        <div class="card-text-container">
+                            <h3 class="card-heading">Set:</h3>
+                            <h3 class="card-title"><%= @gensets.find(card.genset_id).set %></h3>
+                        </div>
+                        <div class="card-text-container">
+                            <h3 class="card-heading">Condition:</h3>
+                            <h3 class="card-title"> <%= @card_conditions.find(card.card_condition_id).condition %> </h3>
+                        </div>
+                        <div class="card-text-container">
+                            <h3 class="card-heading">Price:</h3>
+                            <h3 class="card-title">$<%= card.price %> </h3>
+                        </div>
+                    </div>
                 <% end %>
             </div>
         </div>

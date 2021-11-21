@@ -50,11 +50,11 @@ ActiveRecord::Schema.define(version: 2021_11_20_134636) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "title"
-    t.integer "number"
+    t.string "title", null: false
+    t.integer "number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "price"
+    t.integer "price", null: false
     t.bigint "genset_id", null: false
     t.bigint "card_condition_id", null: false
     t.bigint "user_id", null: false

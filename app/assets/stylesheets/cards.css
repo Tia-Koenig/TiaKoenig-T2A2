@@ -1,0 +1,128 @@
+/* INDEX */
+
+.listings-container {
+    max-width: 1296px;
+    background: #fff;
+    min-height: 100vh;
+}
+
+.listings-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #222;
+}
+
+.btn-primary.create-btn {
+    background-color: #5cb85c;
+    padding: 0 32px;
+}
+
+.btn-primary.create-btn a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #222;
+}
+
+.cards-links {
+    display: flex;
+    width: 100%;
+    max-width: 1296px;
+    justify-content: flex-start;
+    padding: 0 24px;
+    margin-bottom: 24px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f5;
+    border-radius: 8px;
+    min-width: 250px;
+    max-width: 350px;
+    padding: 12px;
+    margin-bottom: 24px;
+}
+
+.card-content + .card-content {
+    margin-left: 24px;
+}
+
+.card-text-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.card-content img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+.card-heading {
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+.card-title {
+    font-size: 16px;
+}
+
+/* SHOW */
+.show-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1296px;
+    background: #fff;
+    color: #222;
+    min-height: 75vh;
+    padding: 24px;
+}
+
+.show-container .card-content {
+    flex-direction: row;
+    max-width: 600px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.show-container .card-content img {
+    margin-bottom: 0;
+    max-width: 60%;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+}
+
+.show-heading {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.text-content .card-text-container + .card-text-container {
+    margin-top: 16px;
+}
+
+.show-links-container {
+    display: flex;
+    width: 100%;
+    max-width: max-content;
+}
+
+.show-links-container .btn-primary + .btn-primary {
+    margin-left: 24px;
+}
