@@ -22,8 +22,8 @@ class CardsController < ApplicationController
         @card = Card.new(card_params)
         @card.user_id = current_user.id
         begin
-        @card.save!
-        redirect_to card_path(@card.id)
+            @card.save!
+            redirect_to card_path(@card.id)
         rescue 
             flash.now[:errors] = @card.errors.messages.values.flatten
             render 'new'

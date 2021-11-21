@@ -17,9 +17,9 @@ class CardPolicy
   end
 
   def create?
-    user.has_role?(:admin) || user.has_role?(:user)
+    user
   end
-
+  
   def new?
     create?
   end
