@@ -31,6 +31,9 @@
         <button class="btn-primary back-btn">
             <%= link_to "Back to Listings", cards_path  %>
         </button>
+        <button>
+            
+        </button>
         <% if policy(@card).update? %>           
             <button class="btn-primary edit-btn">
                 <%= link_to "Edit", edit_card_path(@card) %>
