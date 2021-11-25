@@ -5,7 +5,9 @@ class CheckoutController < ApplicationController
     end
 
     def buy 
-        Stripe.api_key = 'sk_test_51JzDGfB3SnMhuojcOdMVnMKn4BLrIstw1i9Mn2BFgRhy00hn31wr976NU5HOjE8Gm5K0ah8JuE7H83abqrcGb6FM00AeiKZzhA'
+        Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+        
+        # 'sk_test_51JzDGfB3SnMhuojcOdMVnMKn4BLrIstw1i9Mn2BFgRhy00hn31wr976NU5HOjE8Gm5K0ah8JuE7H83abqrcGb6FM00AeiKZzhA'
 
         card = Card.find(params[:card_id])
 
@@ -15,7 +17,7 @@ class CheckoutController < ApplicationController
                 product_data: {
                     name: card.title,
                 },
-                unit_amount: card.price * 100,
+                unit_amount: card.price * 100
             },
             quantity: 1,
         }
@@ -24,7 +26,7 @@ class CheckoutController < ApplicationController
             line_items: [line_item],
             mode: 'payment',
             success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
-            cancel_url: cancel_url,
+            cancel_url: cancel_url + "?session_id={CHECKOUT_SESSION_ID}",
         })
 
           redirect_to session.url 

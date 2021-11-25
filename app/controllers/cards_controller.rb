@@ -51,8 +51,12 @@ class CardsController < ApplicationController
     end
 
     def show 
+        begin
         @genset = Genset.find(@card.genset_id)
         @card_condition = CardCondition.find(@card.card_condition_id)
+        rescue 
+            redirect_to user_session_path
+        end
     end
 
     def card_params
