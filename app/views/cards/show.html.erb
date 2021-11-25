@@ -19,7 +19,7 @@
             </div>
             <div class="card-text-container">
                 <h3 class="card-heading">Seller:</h3> 
-                <h3 class="card-title"><%= @card.user.email %> </h3>
+                <h3 class="card-title"><%= @card.user.username %> </h3>
             </div>
             <div class="card-text-container">
                 <h3 class="card-heading">Price:</h3> 
@@ -31,9 +31,11 @@
         <button class="btn-primary back-btn">
             <%= link_to "Back to Listings", cards_path  %>
         </button>
-        <button>
-            
+
+        <button class="btn-primary buy-btn" type="submit"> 
+            <%= link_to "Buy Card", buy_path(@card.id) %>
         </button>
+
         <% if policy(@card).update? %>           
             <button class="btn-primary edit-btn">
                 <%= link_to "Edit", edit_card_path(@card) %>

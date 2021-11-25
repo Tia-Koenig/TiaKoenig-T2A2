@@ -71,6 +71,15 @@
     text-decoration: none;
   }
 
+  .buy-btn {
+    background-color: paleturquoise;
+    color: black;
+  }
+
+  .buy-btn a{
+      text-decoration: none;
+  }
+
   .edit-btn {
       background-color: #f0ad4e;
   }
