@@ -8,7 +8,7 @@
 
 # sample data 
 
-User.create(email: "seed@admin.com", password: "password")
+User.create(username: "admin", email: "seed@admin.com", password: "password")
 User.find_by(email: "seed@admin.com").add_role(:admin)
 
 User.create(email: "test@test.com", password: "password")

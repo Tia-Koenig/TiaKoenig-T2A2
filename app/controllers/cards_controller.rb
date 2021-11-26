@@ -13,12 +13,11 @@ class CardsController < ApplicationController
     
     def new 
         @card = Card.new 
-        # @card = current_user.cards.build
+        
     end
 
     def create
         @card = Card.new(card_params)
-        # @card = current_user.cards.build(card_params)
         @card.user_id = current_user.id
         begin
             @card.save!
