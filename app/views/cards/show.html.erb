@@ -41,9 +41,11 @@
             <%= link_to "Back to Listings", cards_path  %>
         </button>
 
+        <% if @user.id != @card.user_id %>
         <button class="btn-primary buy-btn" type="submit"> 
             <%= link_to "Buy Card", buy_path(@card.id) %>
         </button>
+        <% end %>
 
         <% if policy(@card).update? %>           
                 <%= link_to "Edit", edit_card_path(@card), class: "btn-primary edit-btn" %>

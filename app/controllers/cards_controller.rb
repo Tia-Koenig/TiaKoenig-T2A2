@@ -51,6 +51,7 @@ class CardsController < ApplicationController
 
     def show 
         begin
+            @user = current_user
             @genset = Genset.find(@card.genset_id)
             @card_condition = CardCondition.find(@card.card_condition_id)
         rescue 

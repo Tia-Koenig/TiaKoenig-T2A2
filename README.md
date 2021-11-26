@@ -125,10 +125,8 @@ A Card has One image attached
 ### **Users**
 
 A User can have Many Cards, if the User deletes their account, their Card will be destroyed.
+A User can have One Role
 
-????????????
-A User can have One or many Roles
-????????????
 
 ### **GenSet**
 GenSet has many Cards
