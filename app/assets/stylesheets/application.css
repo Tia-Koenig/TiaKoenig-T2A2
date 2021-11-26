@@ -22,6 +22,22 @@
     color: white;
 }
 
+.field {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+}
+
+.login-header {
+    margin-top: 50px;
+    text-align: center;
+}
+
 * {
     margin: 0;
     padding: 0;

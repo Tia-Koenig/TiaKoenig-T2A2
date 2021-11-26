@@ -1,3 +1,12 @@
+<header class="page-header">
+    <nav>
+        <ul>
+             <a href="/"><li>Home</li></a> 
+             <a href="/cards"><li>Listings</li></a>
+        </ul>
+    </nav>
+</header>
+
 <div class="container show-container">
     <div class="card-content">
         <%if @card.card_image.attached?%>
@@ -31,15 +40,13 @@
         <button class="btn-primary back-btn">
             <%= link_to "Back to Listings", cards_path  %>
         </button>
-            
+
         <button class="btn-primary buy-btn" type="submit"> 
             <%= link_to "Buy Card", buy_path(@card.id) %>
         </button>
 
         <% if policy(@card).update? %>           
-            <button class="btn-primary edit-btn">
-                <%= link_to "Edit", edit_card_path(@card) %>
-            </button>
+                <%= link_to "Edit", edit_card_path(@card), class: "btn-primary edit-btn" %>
         <% end %>
         <% if policy(@card).destroy? %>
             <button class="btn-primary delete-btn">

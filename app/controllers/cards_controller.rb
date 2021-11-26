@@ -1,11 +1,8 @@
 class CardsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index]
     before_action :check_authorization, except: [:index, :show, :new, :create]
     before_action :find_card, only: [:update, :edit, :show, :destroy]
     before_action :setup_genset_and_card_condition, only: [:new, :edit, :show, :create]
-    
-
-    #add :show when created for account, so when they click account, if theyre logged in, they'll see their information, if not, redirect to login 
 
 
     def index
@@ -16,10 +13,12 @@ class CardsController < ApplicationController
     
     def new 
         @card = Card.new 
+        # @card = current_user.cards.build
     end
 
     def create
         @card = Card.new(card_params)
+        # @card = current_user.cards.build(card_params)
         @card.user_id = current_user.id
         begin
             @card.save!
@@ -52,8 +51,8 @@ class CardsController < ApplicationController
 
     def show 
         begin
-        @genset = Genset.find(@card.genset_id)
-        @card_condition = CardCondition.find(@card.card_condition_id)
+            @genset = Genset.find(@card.genset_id)
+            @card_condition = CardCondition.find(@card.card_condition_id)
         rescue 
             redirect_to user_session_path
         end
@@ -76,9 +75,6 @@ class CardsController < ApplicationController
         @card = find_card
         authorize @card
     end
-
-    
-    private 
-    
+  
 
 end

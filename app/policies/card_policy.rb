@@ -17,7 +17,7 @@ class CardPolicy
   end
 
   def create?
-    current_user.has_role?(:admin) || user.id == card.user_id
+    user.has_role?(:admin) || user.has_role?(:user)
   end
   
   def new?
@@ -25,7 +25,7 @@ class CardPolicy
   end
 
   def update?
-    user
+    user.has_role?(:admin) || user.id == card.user_id
   end
 
   def edit?

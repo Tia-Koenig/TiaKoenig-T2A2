@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :cards
+  resources :cards  
+
+  resources :users
+  get 'users/show', to: "users#show"
   
   root to: "home#index"
 
