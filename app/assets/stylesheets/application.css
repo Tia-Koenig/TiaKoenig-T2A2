@@ -33,9 +33,14 @@
     justify-content: center;
 }
 
-.login-header {
+.devise-header {
     margin-top: 50px;
     text-align: center;
+}
+
+.devise-links {
+    display: flex;
+    justify-content: center;
 }
 
 * {
