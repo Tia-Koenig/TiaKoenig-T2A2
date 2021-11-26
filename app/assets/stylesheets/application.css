@@ -184,6 +184,10 @@
     text-align: center;
 }
 
+.usernav a {
+    color: black;
+}
+
 .cards-links li {
     list-style: none;
     margin-bottom: 4px;
